@@ -38,20 +38,33 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
   
+	-- vs-code like icons
+	use("kyazdani42/nvim-web-devicons")
+
+	-- file explorer
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional, for file icons
+		},
+		tag = 'nightly' -- optional, updated every week. (see issue #1193)
+	}
+
+	-- statusline
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+  
   -- commenting with gc
 	use("numToStr/Comment.nvim")
 
--- vs-code like icons
-	use("kyazdani42/nvim-web-devicons")
-
-
-	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
-
-  -- statusline
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- fuzzy finding w/ telescope
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
 end)
