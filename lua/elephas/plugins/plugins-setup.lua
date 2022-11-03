@@ -34,9 +34,14 @@ end
 return packer.startup(function(use)
 	-- packer can manage itself
 	use("wbthomason/packer.nvim")
-  use ('bluz71/vim-moonfly-colors')
 
-	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+-- colors
+  use("bluz71/vim-moonfly-colors")
+  use("ellisonleao/gruvbox.nvim")
+  use('folke/tokyonight.nvim')
+  use { 'Everblush/everblush.nvim', as = 'everblush' }
+	
+  use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
   
 	-- vs-code like icons
 	use("kyazdani42/nvim-web-devicons")
