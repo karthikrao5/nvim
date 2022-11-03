@@ -6,3 +6,4 @@ require("elephas.core.colorscheme")
 
 require("elephas.plugins.lualine")
 require("elephas.plugins.nvim-tree")
+require("elephas.plugins.nvim-cmp")
