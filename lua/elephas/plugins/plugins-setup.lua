@@ -31,6 +31,8 @@ return packer.startup(function(use)
 	-- packer can manage itself
 	use("wbthomason/packer.nvim")
 
+	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+
 	-- colors
 	use("bluz71/vim-moonfly-colors")
 	use("ellisonleao/gruvbox.nvim")
@@ -39,6 +41,7 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
+	use({ "akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim" })
 	-- vs-code like icons
 	use("kyazdani42/nvim-web-devicons")
 
