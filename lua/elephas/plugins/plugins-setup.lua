@@ -35,7 +35,8 @@ return packer.startup(function(use)
 
 	-- colors
 	use("bluz71/vim-moonfly-colors")
-	use("ellisonleao/gruvbox.nvim")
+	-- use("ellisonleao/gruvbox.nvim")
+  use("morhetz/gruvbox")
 	use("folke/tokyonight.nvim")
 	use({ "Everblush/everblush.nvim", as = "everblush" })
 	use("doums/darcula")
