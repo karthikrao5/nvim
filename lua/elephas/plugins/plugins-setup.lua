@@ -38,7 +38,7 @@ return packer.startup(function(use)
 	use("ellisonleao/gruvbox.nvim")
 	use("folke/tokyonight.nvim")
 	use({ "Everblush/everblush.nvim", as = "everblush" })
-
+	use("doums/darcula")
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	use({ "akinsho/flutter-tools.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -46,12 +46,22 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- file explorer
+	-- use({
+	-- 	"nvim-tree/nvim-tree.lua",
+	-- 	requires = {
+	-- 		"nvim-tree/nvim-web-devicons", -- optional, for file icons
+	-- 	},
+	-- 	tag = "nightly", -- optional, updated every week. (see issue #1193)
+	-- })
+
 	use({
-		"nvim-tree/nvim-tree.lua",
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
 		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
 		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
 	-- statusline

@@ -5,7 +5,7 @@ local typescript = require("typescript")
 local keymap = vim.keymap
 
 local on_attach = function(client, bufnr)
-  -- keybind options
+	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	-- set keybinds
@@ -77,4 +77,9 @@ lspconfig["sumneko_lua"].setup({
 			},
 		},
 	},
+})
+
+lspconfig["dartls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
