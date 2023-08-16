@@ -1,19 +1,9 @@
-require("elephas.plugins.plugins-setup")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system(
+        {"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
+         lazypath})
+end
+vim.opt.rtp:prepend(lazypath)
 
-require("elephas.core.options")
-require("elephas.core.keymaps")
-require("elephas.core.colorscheme")
-
-require("elephas.plugins.lualine")
--- require("elephas.plugins.nvim-tree")
-require("elephas.plugins.neotree")
-require("elephas.plugins.nvim-cmp")
-require("elephas.plugins.lsp.mason")
-require("elephas.plugins.lsp.lspsaga")
-require("elephas.plugins.lsp.lspconfig")
-require("elephas.plugins.lsp.null-ls")
-require("elephas.plugins.autopairs")
-require("elephas.plugins.treesitter")
-require("elephas.plugins.gitsigns")
-require("elephas.plugins.fluttertools")
-require("elephas.plugins.telescope")
+require("lazy").setup("plugins")
