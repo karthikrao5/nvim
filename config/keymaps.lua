@@ -1,1 +1,1 @@
-vim.wo.relativenumber = true
+
