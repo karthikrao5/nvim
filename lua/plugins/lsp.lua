@@ -54,12 +54,14 @@ return {{{
             -- see :help lsp-zero-keybindings
             -- to learn the available actions
             lsp_zero.default_keymaps({
-                buffer = bufnr
+                buffer = bufnr,
+		preserve_mappings = false
+
             })
         end)
 
         require('mason-lspconfig').setup({
-            ensure_installed = {"tsserver", "dartls"}, 
+            ensure_installed = {"tsserver"},
             handlers = {
                 lsp_zero.default_setup,
                 tsserver = function()
