@@ -59,7 +59,7 @@ return {{{
         end)
 
         require('mason-lspconfig').setup({
-            ensure_installed = {"tsserver"},
+            ensure_installed = {"tsserver", "dartls"}, 
             handlers = {
                 lsp_zero.default_setup,
                 tsserver = function()
