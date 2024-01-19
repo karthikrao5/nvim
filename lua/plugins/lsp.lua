@@ -17,10 +17,15 @@ return {
     lspconfig.tsserver.setup({})
     lspconfig.eslint.setup({
       on_attach = function(client, bufnr) 
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          buffer = bufnr,
-          command = "EslintFixAll"
-        })
+        client.server_capabilities.documentFormattingProvider = true
+        if client.server_capabilities.documentFormattingProvider then
+          local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+            command = 'silent! EslintFixAll',
+            group = au_lsp
+          })
+    		end
       end,
       settings = {
         codeAction = {
@@ -32,7 +37,11 @@ return {
           enable = true,
           mode = "all",
         },
-        format = false,
+        lintTask = {
+          enable = true
+        },
+        format = true,
+        autoFixOnSave = true,
         nodePath = "",
         onIgnoredFiles = "off",
         packageManager = "npm",
