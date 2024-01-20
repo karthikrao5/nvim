@@ -7,7 +7,7 @@ vim.keymap.set("v", "J", ":m '<+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
 
 
-
+vim.o.number = true
 vim.o.relativenumber = true
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2

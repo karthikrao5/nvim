@@ -3,15 +3,21 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig",
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    "j-hui/fidget.nvim",
   },
   config = function() 
+    require('fidget').setup()
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls", "tsserver", "eslint"
       }
     })
-
     -- Setup language servers.
     local lspconfig = require('lspconfig')
     lspconfig.tsserver.setup({})
@@ -25,7 +31,7 @@ return {
             command = 'silent! EslintFixAll',
             group = au_lsp
           })
-    		end
+        end
       end,
       settings = {
         codeAction = {
@@ -56,6 +62,38 @@ return {
       }
     })
 
+
+    local cmp = require('cmp')
+    cmp.setup({
+      sources = {
+        {name = 'nvim_lsp'},
+      },
+      mapping = {
+        ['<Tab>'] = cmp.mapping.confirm({select = false}),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+        ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+        ['<C-p>'] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.select_prev_item({behavior = 'insert'})
+          else
+            cmp.complete()
+          end
+        end),
+        ['<C-n>'] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.select_next_item({behavior = 'insert'})
+          else
+            cmp.complete()
+          end
+        end),
+      },
+      snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
+    })
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
