@@ -15,7 +15,7 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls", "tsserver", "eslint"
+        "lua_ls", "tsserver", "eslint", "clangd"
       }
     })
     -- Setup language servers.
@@ -62,6 +62,13 @@ return {
       }
     })
 
+    lspconfig.clangd.setup({
+      on_attach = function()
+        require("clangd_extensions.inlay_hints").setup_autocmd()
+        require("clangd_extensions.inlay_hints").set_inlay_hints()
+      end,
+      capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    })
 
     local cmp = require('cmp')
     cmp.setup({
