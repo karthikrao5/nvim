@@ -6,6 +6,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '<+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
 
+vim.keymap.set("n", "<leader>n", "<cmd>:bn<CR>", {desc = "Next buffer"})
+vim.keymap.set("n", "<leader>Q", "<cmd>:bd<CR>", {desc = "Close current buffer"})
+vim.keymap.set("n", "<leader>,", "<cmd>:ls<CR>", {desc = "List buffers"})
 
 vim.o.number = true
 vim.o.relativenumber = true
