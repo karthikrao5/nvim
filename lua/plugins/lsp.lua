@@ -11,7 +11,7 @@ return {
     'hrsh7th/nvim-cmp',
     "j-hui/fidget.nvim",
   },
-  config = function() 
+  config = function()
     require('neodev').setup({})
     require('fidget').setup()
     require("mason").setup()
@@ -36,7 +36,7 @@ return {
 
     lspconfig.tsserver.setup({})
     lspconfig.eslint.setup({
-      on_attach = function(client, bufnr) 
+      on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = true
         if client.server_capabilities.documentFormattingProvider then
           local au_lsp = vim.api.nvim_create_augroup("eslint_lsp", { clear = true })
@@ -87,23 +87,23 @@ return {
     local cmp = require('cmp')
     cmp.setup({
       sources = {
-        {name = 'nvim_lsp'},
+        { name = 'nvim_lsp' },
       },
       mapping = {
-        ['<Tab>'] = cmp.mapping.confirm({select = false}),
+        ['<Tab>'] = cmp.mapping.confirm({ select = false }),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
-        ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+        ['<Down>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
         ['<C-p>'] = cmp.mapping(function()
           if cmp.visible() then
-            cmp.select_prev_item({behavior = 'insert'})
+            cmp.select_prev_item({ behavior = 'insert' })
           else
             cmp.complete()
           end
         end),
         ['<C-n>'] = cmp.mapping(function()
           if cmp.visible() then
-            cmp.select_next_item({behavior = 'insert'})
+            cmp.select_next_item({ behavior = 'insert' })
           else
             cmp.complete()
           end

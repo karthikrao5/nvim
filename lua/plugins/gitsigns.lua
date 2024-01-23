@@ -29,7 +29,7 @@ return {
         vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end, {desc = "Git: Blame Line"})
         vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, {desc = "Git: Toggle current line blame"})
         vim.keymap.set('n', '<leader>hd', gs.diffthis, {desc = "Git: Diff"})
-        vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, {desc = "Git: Another diff?"})
+        vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end, {desc = "Git: File diff"})
         vim.keymap.set('n', '<leader>td', gs.toggle_deleted, {desc = "Git: Toggle deleted"})
 
         -- Text object

@@ -1,8 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = {'nvim-lua/plenary.nvim'},
-  keys = { -- disable the keymap to grep files
-    {"<leader>/", false}, -- change a keymap
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  keys = {                  -- disable the keymap to grep files
+    { "<leader>/", false }, -- change a keymap
     {
       "<leader>ff",
       "<cmd>Telescope find_files<cr>",
@@ -16,14 +16,14 @@ return {
         })
       end,
       desc = "Find Plugin File"
-    }, 
+    },
     {
       "<leader>fg",
       function()
         require("telescope.builtin").git_files()
       end,
       desc = "Find git files"
-    }, 
+    },
     {
       "<leader>gs",
       function()
@@ -32,5 +32,5 @@ return {
         })
       end,
       desc = "Grep string search"
-    }}
+    } }
 }
