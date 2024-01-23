@@ -9,6 +9,7 @@ return {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
+    'L3MON4D3/LuaSnip',
     "j-hui/fidget.nvim",
   },
   config = function()
@@ -47,6 +48,7 @@ return {
           })
         end
       end,
+
       settings = {
         codeAction = {
           showDocumentation = {
@@ -88,6 +90,7 @@ return {
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
+        { name = 'luasnip' }
       },
       mapping = {
         ['<Tab>'] = cmp.mapping.confirm({ select = false }),

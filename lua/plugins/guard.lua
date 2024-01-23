@@ -9,8 +9,9 @@ return {
 
     -- Assuming you have guard-collection
     ft('lua'):fmt('lsp')
-      :append('stylua')
-      :lint('selene')   
+        :append('stylua')
+
+    ft('typescript,javascript,typescriptreact'):fmt('prettier')
 
     -- Call setup() LAST!
     require('guard').setup({
