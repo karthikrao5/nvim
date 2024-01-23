@@ -1,6 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "folke/neodev.nvim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig",
     'hrsh7th/cmp-nvim-lsp',
@@ -11,6 +12,7 @@ return {
     "j-hui/fidget.nvim",
   },
   config = function() 
+    require('neodev').setup({})
     require('fidget').setup()
     require("mason").setup()
     require("mason-lspconfig").setup({
@@ -18,8 +20,20 @@ return {
         "lua_ls", "tsserver", "eslint", "clangd"
       }
     })
+
     -- Setup language servers.
     local lspconfig = require('lspconfig')
+
+    lspconfig.lua_ls.setup({
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace"
+          }
+        }
+      }
+    })
+
     lspconfig.tsserver.setup({})
     lspconfig.eslint.setup({
       on_attach = function(client, bufnr) 
@@ -121,12 +135,11 @@ return {
             desc = "LSP: " .. desc
           end
 
-          vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = desc }, opts)
+          vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = desc })
         end
 
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
         nmap('n', 'gD', vim.lsp.buf.declaration, "Go to declaration")
         nmap('n', 'gd', vim.lsp.buf.definition, "Go to definition")
         nmap('n', 'K', vim.lsp.buf.hover, "Hover")
