@@ -1,6 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope-symbols.nvim',
+  },
+  config = function()
+    require("telescope").load_extension("flutter")
+  end,
   keys = {                  -- disable the keymap to grep files
     { "<leader>/", false }, -- change a keymap
     {
