@@ -34,7 +34,7 @@ return {
         }
       }
     })
-
+    lspconfig.dartls.setup({})
     lspconfig.tsserver.setup({})
     lspconfig.eslint.setup({
       on_attach = function(client, bufnr)
@@ -145,6 +145,12 @@ return {
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         nmap('n', 'gD', vim.lsp.buf.declaration, "Go to declaration")
         nmap('n', 'gd', vim.lsp.buf.definition, "Go to definition")
+        nmap('n', 'gv', function()
+          vim.cmd [[
+          vsplit
+          ]]
+          vim.lsp.buf.definition()
+        end, "Go to definition")
         nmap('n', 'K', vim.lsp.buf.hover, "Hover")
         nmap('n', 'gi', vim.lsp.buf.implementation, "Go to impl")
         nmap('n', 'gt', vim.lsp.buf.type_definition, "Type defn")
