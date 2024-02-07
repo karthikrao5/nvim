@@ -14,7 +14,7 @@ return {
   },
   config = function()
     require('neodev').setup({})
-    require('fidget').setup()
+    require('fidget').setup({})
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
@@ -35,7 +35,24 @@ return {
       }
     })
     lspconfig.dartls.setup({})
-    lspconfig.tsserver.setup({})
+
+    local function organize_imports()
+      local params = {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+        title = ""
+      }
+      vim.lsp.buf.execute_command(params)
+    end
+
+    lspconfig.tsserver.setup({
+      commands = {
+        OrganizeImports = {
+          organize_imports,
+          description = "Organize Imports"
+        }
+      }
+    })
     lspconfig.eslint.setup({
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = true
@@ -124,6 +141,11 @@ return {
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+    vim.diagnostic.config({
+      virtual_text = false
+    })
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer

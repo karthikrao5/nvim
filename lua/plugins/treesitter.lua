@@ -10,7 +10,11 @@ return { {
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true },
+
     })
+
+    vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
   end
 },
   {
