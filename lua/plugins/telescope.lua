@@ -5,7 +5,7 @@ return {
     'nvim-telescope/telescope-symbols.nvim',
   },
   config = function()
-    require("telescope").load_extension("flutter")
+    -- require("telescope").load_extension("flutter")
   end,
   keys = {                  -- disable the keymap to grep files
     { "<leader>/", false }, -- change a keymap
