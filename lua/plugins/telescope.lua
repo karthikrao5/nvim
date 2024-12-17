@@ -3,6 +3,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-symbols.nvim',
+    'nvim-tree/nvim-web-devicons'
   },
   config = function()
     -- require("telescope").load_extension("flutter")
@@ -38,5 +39,14 @@ return {
         })
       end,
       desc = "Grep string search"
+    },
+    {
+      "<leader>gf",
+      function()
+        require("telescope.builtin").live_grep({
+          search = vim.fn.input("Grep > ")
+        })
+      end,
+      desc = "Search in files"
     } }
 }
