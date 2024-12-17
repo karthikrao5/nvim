@@ -38,5 +38,12 @@ return {
         })
       end,
       desc = "Grep string search"
+    },
+    {
+      "<leader>fb",
+      function()
+        require("telescope.builtin").buffers()
+      end,
+      desc = "Buffers find"
     } }
 }
