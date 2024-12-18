@@ -3,11 +3,12 @@ return { -- add gruvbox
 {'doums/darcula'},
 {"lunarvim/synthwave84.nvim"},
 {"kepano/flexoki-neovim"},
+{'sainnhe/everforest'},
 {'Mofiqul/vscode.nvim'},
 { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 {
     "LazyVim/LazyVim",
     opts = {
-        colorscheme = "darcula"
+        colorscheme = "everforest"
     }
 }}
