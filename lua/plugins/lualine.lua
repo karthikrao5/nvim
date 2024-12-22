@@ -11,11 +11,12 @@ return {
             hide_filename_extension = false, -- Hide filename extension when set to true.
             show_modified_status = false,    -- Shows indicator when the buffer is modified.
 
-            mode = 2,                        -- 0: Shows buffer name
+            -- 0: Shows buffer name
             -- 1: Shows buffer index
             -- 2: Shows buffer name + buffer index
             -- 3: Shows buffer number
             -- 4: Shows buffer name + buffer number
+            mode = 2,
           }
         },
         lualine_c = { { "filename", path = 4 } },
