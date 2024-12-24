@@ -41,6 +41,25 @@ return {
       capabilities = capabilities
     }
 
+    lspconfig.pyright.setup {
+      capabilities = capabilities,
+      settings = {
+        pyright = {
+          disableOrganizeImports = true,
+        },
+        python = {
+          analysis = {
+            inlayHints = {
+              variableTypes = true,
+              functionReturnTypes = true,
+            },
+            ignore = { "*" },
+            typeCheckingMode = "off",
+          },
+        },
+      },
+    }
+
     lspconfig.eslint.setup {
       capabilities = capabilities,
       on_attach = function(client)

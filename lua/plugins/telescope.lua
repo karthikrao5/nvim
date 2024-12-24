@@ -5,6 +5,11 @@ return {
     'nvim-telescope/telescope-symbols.nvim',
     'nvim-tree/nvim-web-devicons'
   },
+  defaults = {
+    file_ignore_patterns = {
+      "^node_modules/"
+    }
+  },
   config = function()
     -- require("telescope").load_extension("flutter")
   end,
