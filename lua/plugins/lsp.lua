@@ -18,14 +18,16 @@ return {
     require("mason").setup()
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "lua_ls", "ts_ls", "eslint", "clangd"
+        "lua_ls", "tsserver", "eslint", "clangd", "pyright"
       }
     })
 
     -- Setup language servers.
     local lspconfig = require('lspconfig')
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-    lspconfig.lua_ls.setup({
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
       settings = {
         Lua = {
           completion = {
@@ -33,10 +35,14 @@ return {
           }
         }
       }
-    })
+    }
 
-    lspconfig.ts_ls.setup({})
-    lspconfig.eslint.setup({
+    lspconfig.tsserver.setup {
+      capabilities = capabilities
+    }
+
+    lspconfig.eslint.setup {
+      capabilities = capabilities,
       on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = true
         if client.server_capabilities.documentFormattingProvider then
@@ -76,15 +82,15 @@ return {
           mode = "location",
         },
       }
-    })
+    }
 
-    lspconfig.clangd.setup({
+    lspconfig.clangd.setup {
       on_attach = function()
         require("clangd_extensions.inlay_hints").setup_autocmd()
         require("clangd_extensions.inlay_hints").set_inlay_hints()
       end,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    })
+      capabilities = capabilities
+    }
 
     local cmp = require('cmp')
     cmp.setup({
@@ -145,8 +151,9 @@ return {
         -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, { buffer = ev.buf, desc = "LSP: " })
         -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf, desc = "LSP: " })
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { buffer = ev.buf, desc = "LSP: Rename" })
-        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = "LSP: Code actions" })
-        vim.keymap.set('n', '<space>ft', function()
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action,
+          { buffer = ev.buf, desc = "LSP: Code actions" })
+        vim.keymap.set('n', '<space>fo', function()
           vim.lsp.buf.format { async = true }
         end, { buffer = ev.buf, desc = "Format" })
       end
