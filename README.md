@@ -9,3 +9,30 @@ Additionally, your lsp enable commands don't have to be in init.lua. they can be
 helpful commands:
 1. :checkhealth vim.lsp to check the status of an lsp attached to the buffer
 2.
+
+
+
+
+
+
+
+## Completion
+https://www.reddit.com/r/neovim/comments/1jlmozd/comment/mk5qyc9/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+
+I actually spent a good 4-5hrs trying to do the exact same thing yesterday. Felt like banging my head against the wall and calling it a day but then came across the api documentation and I found the solution.
+
+https://neovim.io/doc/user/lsp.html#vim.lsp.config()
+
+Check out the second example. If you set it up correctly then :checkhealth lsp should list out all the capabilities from blink.cmp.
+
+If you don't know how to acquire capabilities from blink.cmp here is the documentation
+
+https://cmp.saghen.dev/installation
+
+Look under Merging LSP capabilities section.
+
+Edit:
+
+Forgot to mention that you need to call vim.lsp.config before vim.lsp.enable.
+
+Cheers.

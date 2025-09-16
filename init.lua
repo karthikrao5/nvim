@@ -1,4 +1,4 @@
-require("config.lazy")
-vim.lsp.enable({
-    "luals"
-})
+require("core.lsp")
+require("core.options")
+require("config.autocmds")
+require("core.lazy")
