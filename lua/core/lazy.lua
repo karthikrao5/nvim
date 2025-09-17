@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ import = "plugins" }, {
   install = {
     missing = true,
+    coloscheme = { "catppuccin" },
   },
   checker = {
     enabled = true,
