@@ -1,3 +1,7 @@
+
+Basically copies structure from https://github.com/adibhanna/nvim
+
+
 https://www.reddit.com/r/neovim/comments/1jw0zav/psa_heres_a_quick_guide_to_using_the_new_built_in/
 
 Neovim 0.11 automatically checks the root directory for a directory called "lsp" and assumes that it will find lsp configs in there. The lsp name that you call in the `vim.lsp.enable()` function has to have the same name of the file that contains the lsp configuration.
