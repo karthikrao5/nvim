@@ -12,7 +12,7 @@ vim.opt.showmode = false                                -- we don't need to see 
 vim.opt.showtabline = 0                                 -- always show tabs
 vim.opt.smartcase = true                                -- smart case
 vim.opt.smartindent = true                              -- make indenting smarter again
-vim.opt.termguicolors = true                            -- set term gui colors (most terminals support this)
+vim.opt.termguicolors = true
 vim.opt.undofile = true                                 -- enable persistent undo
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"     -- set an undo directory
 vim.opt.shiftwidth = 2                                  -- the number of spaces inserted for each indentation
@@ -20,3 +20,5 @@ vim.opt.relativenumber = true                           -- set relative numbered
 vim.opt.numberwidth = 4                                 -- set number column width to 2 {default 4}
 
 
+vim.o.background = "dark" -- or "light" for light mode
+-- vim.cmd([[colorscheme catppuccin]])

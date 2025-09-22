@@ -120,8 +120,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
         map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+        map("gi", vim.lsp.buf.implementation, "Goto Implementation")
 
         map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
+        map("<leader>vi", "<cmd>vsplit | lua vim.lsp.buf.implementation()<cr>", "Goto Iimplementation in Vertical Split")
 
         local wk = require("which-key")
         wk.add({
